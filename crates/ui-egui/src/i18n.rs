@@ -237,6 +237,10 @@ fn mask_atoms(line: &str) -> Vec<String> {
                 && chars
                     .get(i + 1)
                     .is_some_and(|(_, next)| next.is_ascii_alphanumeric() || *next == '/'))
+            || (matches!(ch, '-' | '+')
+                && chars
+                    .get(i + 1)
+                    .is_some_and(|(_, next)| next.is_ascii_digit()))
         {
             let mut j = i + 1;
             while j < chars.len() {
@@ -820,6 +824,11 @@ mod tests {
             tf(Lang::Hebrew, "Footprint: {}", &["/tmp/R_0603.kicad_mod"]),
             "/tmp/R_0603.kicad_mod :עקבה"
         );
+        assert_eq!(
+            visual_rtl("מיקום: -12.50, +4.00 מ\"מ"),
+            "מ\"מ +4.00 ,-12.50 :מיקום"
+        );
+        assert_eq!(visual_rtl("שינוי - בדיקה"), "בדיקה - שינוי");
         assert_eq!(
             tf(
                 Lang::Hebrew,
