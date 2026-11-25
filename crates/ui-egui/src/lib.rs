@@ -306,12 +306,13 @@ impl App {
                 if fonts.font_data.contains_key(&name) {
                     continue;
                 }
-                if let Ok(bytes) = std::fs::read(&path) {
-                    fonts.font_data.insert(
-                        name.clone(),
-                        std::sync::Arc::new(egui::FontData::from_owned(bytes)),
-                    );
-                    append_hebrew_fallback(&mut fonts, &name);
+                if std::fs::metadata(&path).is_ok_and(|m| m.len() == 0 || m.len() > MAX_FONT_BYTES)
+                {
+                    continue;
+                }
+                if let Ok(bytes) = std::fs::read(&path)
+                    && try_insert_validated_font(&mut fonts, &name, bytes)
+                {
                     added = true;
                 }
             }
@@ -1375,6 +1376,54 @@ impl eframe::App for App {
         }
     }
 }
+#[cfg(not(target_arch = "wasm32"))]
+const MAX_FONT_BYTES: u64 = 64 << 20;
+
+#[cfg(not(target_arch = "wasm32"))]
+fn is_sfnt(bytes: &[u8]) -> bool {
+    matches!(
+        bytes.get(..4),
+        Some(b"\0\x01\0\0" | b"OTTO" | b"true" | b"ttcf")
+    )
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn is_valid_font_data(font: &std::sync::Arc<egui::FontData>) -> bool {
+    let bytes = font.font.as_ref();
+    if bytes.is_empty() || !is_sfnt(bytes) {
+        return false;
+    }
+    let candidate = std::sync::Arc::clone(font);
+    std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let mut defs = egui::FontDefinitions::empty();
+        defs.font_data.insert("candidate".into(), candidate);
+        defs.families
+            .insert(egui::FontFamily::Proportional, vec!["candidate".into()]);
+        let ctx = egui::Context::default();
+        ctx.set_fonts(defs);
+        let mut output = ctx.run_ui(egui::RawInput::default(), |_| {});
+        output.textures_delta.clear();
+        let font_id = egui::FontId::proportional(13.0);
+        ctx.fonts_mut(|f| f.has_glyphs(&font_id, "א"))
+    }))
+    .unwrap_or(false)
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn try_insert_validated_font(
+    fonts: &mut egui::FontDefinitions,
+    name: &str,
+    bytes: Vec<u8>,
+) -> bool {
+    let font = std::sync::Arc::new(egui::FontData::from_owned(bytes));
+    if !is_valid_font_data(&font) {
+        return false;
+    }
+    fonts.font_data.insert(name.to_owned(), font);
+    append_hebrew_fallback(fonts, name);
+    true
+}
+
 fn append_hebrew_fallback(fonts: &mut egui::FontDefinitions, name: &str) {
     for family in [egui::FontFamily::Proportional, egui::FontFamily::Monospace] {
         if let Some(list) = fonts.families.get_mut(&family)
@@ -1636,5 +1685,30 @@ mod tests {
             "missing עברית button in Appearance panel: {painted}"
         );
         Ok(())
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    #[test]
+    fn invalid_or_empty_font_bytes_are_rejected_without_panic() {
+        let mut fonts = egui::FontDefinitions::default();
+        let baseline_count = fonts.font_data.len();
+        assert!(!try_insert_validated_font(
+            &mut fonts,
+            "User Empty",
+            Vec::new()
+        ));
+        assert!(!try_insert_validated_font(
+            &mut fonts,
+            "User Garbage",
+            b"not a font".to_vec()
+        ));
+        assert!(!try_insert_validated_font(
+            &mut fonts,
+            "User Truncated SFNT",
+            b"\0\x01\0\0truncated".to_vec()
+        ));
+        if let Some(latin_only) = fonts.font_data.get("Ubuntu-Light") {
+            assert!(!is_valid_font_data(latin_only));
+        }
+        assert_eq!(fonts.font_data.len(), baseline_count);
     }
 }
