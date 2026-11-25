@@ -2,7 +2,12 @@
 
 use std::path::{Path, PathBuf};
 
-const FONT_NAME: &str = "NotoSansHebrew-Regular.ttf";
+const FONT_CANDIDATES: [&str; 4] = [
+    "NotoSansHebrew-Regular.ttf",
+    "NotoSansHebrew[wdth,wght].ttf",
+    "noto-sans-hebrew/NotoSansHebrew-Regular.ttf",
+    "noto-sans-hebrew/NotoSansHebrew[wdth,wght].ttf",
+];
 
 fn absolutize(path: &Path) -> PathBuf {
     if path.is_absolute() {
@@ -27,11 +32,14 @@ fn main() {
     }
     let abs_dir = absolutize(Path::new(dir));
     println!("cargo::rerun-if-changed={}", abs_dir.display());
-    let font_path = abs_dir.join(FONT_NAME);
-    if font_path.is_file() {
-        let abs = std::fs::canonicalize(&font_path).unwrap_or(font_path);
-        println!("cargo::rerun-if-changed={}", abs.display());
-        println!("cargo::rustc-env=HEBREW_CRAFT_FONT_PATH={}", abs.display());
-        println!("cargo::rustc-cfg=has_hebrew_craft_font");
+    for rel in FONT_CANDIDATES {
+        let font_path = abs_dir.join(rel);
+        if font_path.is_file() {
+            let abs = std::fs::canonicalize(&font_path).unwrap_or(font_path);
+            println!("cargo::rerun-if-changed={}", abs.display());
+            println!("cargo::rustc-env=HEBREW_CRAFT_FONT_PATH={}", abs.display());
+            println!("cargo::rustc-cfg=has_hebrew_craft_font");
+            break;
+        }
     }
 }

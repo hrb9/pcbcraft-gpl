@@ -243,7 +243,7 @@ impl App {
 
         #[cfg(not(target_arch = "wasm32"))]
         {
-            const CANDIDATES: [(&str, &str); 8] = [
+            const CANDIDATES: [(&str, &str); 10] = [
                 (
                     "Arial Hebrew",
                     "/System/Library/Fonts/Supplemental/Arial Hebrew.ttf",
@@ -255,8 +255,16 @@ impl App {
                     "/usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf",
                 ),
                 (
+                    "Noto Sans Hebrew Variable",
+                    "/usr/share/fonts/truetype/noto/NotoSansHebrew[wdth,wght].ttf",
+                ),
+                (
                     "Noto Sans Hebrew Arch",
                     "/usr/share/fonts/noto/NotoSansHebrew-Regular.ttf",
+                ),
+                (
+                    "Noto Sans Hebrew Arch Variable",
+                    "/usr/share/fonts/noto/NotoSansHebrew[wdth,wght].ttf",
                 ),
                 (
                     "DejaVu Sans",
@@ -265,16 +273,45 @@ impl App {
                 ("Arial", "C:\\Windows\\Fonts\\arial.ttf"),
                 ("Segoe UI", "C:\\Windows\\Fonts\\segoeui.ttf"),
             ];
-            for (name, path) in CANDIDATES {
-                if fonts.font_data.contains_key(name) {
+            let mut user_paths: Vec<(String, std::path::PathBuf)> = Vec::new();
+            for var in ["XDG_DATA_HOME", "HOME"] {
+                if let Ok(base) = std::env::var(var) {
+                    let base = base.trim();
+                    if base.is_empty() {
+                        continue;
+                    }
+                    let fonts_dir = if var == "HOME" {
+                        vec![
+                            std::path::PathBuf::from(base).join(".local/share/fonts"),
+                            std::path::PathBuf::from(base).join("Library/Fonts"),
+                        ]
+                    } else {
+                        vec![std::path::PathBuf::from(base).join("fonts")]
+                    };
+                    for dir in fonts_dir {
+                        for file in [
+                            "NotoSansHebrew-Regular.ttf",
+                            "NotoSansHebrew[wdth,wght].ttf",
+                        ] {
+                            user_paths.push((format!("User {file}"), dir.join(file)));
+                        }
+                    }
+                }
+            }
+            for (name, path) in CANDIDATES
+                .iter()
+                .map(|(n, p)| ((*n).to_string(), std::path::PathBuf::from(p)))
+                .chain(user_paths)
+            {
+                if fonts.font_data.contains_key(&name) {
                     continue;
                 }
-                if let Ok(bytes) = std::fs::read(path) {
+                if let Ok(bytes) = std::fs::read(&path) {
                     fonts.font_data.insert(
-                        name.into(),
+                        name.clone(),
                         std::sync::Arc::new(egui::FontData::from_owned(bytes)),
                     );
-                    append_hebrew_fallback(&mut fonts, name);
+                    append_hebrew_fallback(&mut fonts, &name);
                     added = true;
                 }
             }

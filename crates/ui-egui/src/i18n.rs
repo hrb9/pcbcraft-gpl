@@ -447,62 +447,62 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Redo" => "ביצוע חוזר",
         "Undo" => "ביטול",
         "Select  Esc" => "בחירה  Esc",
-        "Add symbol  A" => "הוסף סמל  A",
+        "Add symbol  A" => "הוספת סמל  A",
         "Wire  W" => "חיווט  W",
         "Sync to PCB >" => "סנכרון ל-PCB >",
         "Route  X" => "ניתוב  X",
-        "Sync schematic" => "סנכרן סכמה",
+        "Sync schematic" => "סנכרון סכמה",
         "Circular cutout" => "חיתוך עגול",
         "Move  M" => "הזזה  M",
         "Rotate  R" => "סיבוב  R",
         "Fit" => "התאמה",
         "Commands  Ctrl+K" => "פקודות  Ctrl+K",
         "PROJECT" => "פרויקט",
-        "Add symbol" => "הוסף סמל",
+        "Add symbol" => "הוספת סמל",
         "Browse KiCad libraries →" => "עיון בספריות KiCad →",
         "Resistor" => "נגד",
         "LED" => "LED",
         "Capacitor" => "קבל",
         "2-pin connector" => "מחבר 2 פינים",
         "COMPONENTS" => "רכיבים",
-        "Press A to place your first symbol" => "לחץ A להצבת הסמל הראשון שלך",
+        "Press A to place your first symbol" => "יש ללחוץ על A להצבת הסמל הראשון",
         "NETS" => "רשתות",
         "BOARD" => "לוח",
         "{} × {} mm" => "{} × {} מ\"מ",
         "2 copper layers · 1.6 mm" => "2 שכבות נחושת · 1.6 מ\"מ",
         "{} footprints · {} segments" => "{} עקבות · {} מקטעים",
         "One project. One window." => "פרויקט אחד. חלון אחד.",
-        "Scroll to zoom · middle-drag to pan" => "גלול לזום · גרירה אמצעית להזזה",
+        "Scroll to zoom · middle-drag to pan" => "גלילה לזום · גרירה אמצעית להזזה",
         "Dark" => "כהה",
         "Light" => "בהיר",
-        "Show grid" => "הצג רשת",
+        "Show grid" => "הצגת רשת",
         "Accent color" => "צבע הדגשה",
         "Appearance is saved automatically." => "המראה נשמר אוטומטית.",
         "PROPERTIES" => "מאפיינים",
         "Unit {}" => "יחידה {}",
         "Stable ID {}" => "מזהה יציב {}",
         "Value" => "ערך",
-        "Apply value" => "החל ערך",
+        "Apply value" => "החלת ערך",
         "Position · mm" => "מיקום · מ\"מ",
         "X" => "X",
         "Y" => "Y",
-        "Apply position" => "החל מיקום",
-        "Rotate 90°  R" => "סובב 90°  R",
+        "Apply position" => "החלת מיקום",
+        "Rotate 90°  R" => "סיבוב 90°  R",
         "Footprint: {}" => "עקבה: {}",
         "Footprint: unassigned" => "עקבה: לא משויכת",
         "Footprint: starter package" => "עקבה: חבילת התחלה",
-        "Assign footprint in Libraries →" => "שייך עקבה בספריות →",
+        "Assign footprint in Libraries →" => "שיוך עקבה בספריות →",
         "Pin / net" => "פין / רשת",
         "unassigned" => "לא משויך",
         "Selected object" => "אובייקט נבחר",
         "Delete  Del" => "מחיקה  Del",
         "Project settings" => "הגדרות פרויקט",
-        "Select an item to inspect and edit it." => "בחר פריט כדי לבדוק ולערוך אותו.",
+        "Select an item to inspect and edit it." => "יש לבחור פריט כדי לבדוק ולערוך אותו.",
         "BOARD GEOMETRY" => "גיאומטריית לוח",
         "W" => "רוחב",
         "H" => "גובה",
         " mm" => " מ\"מ",
-        "Apply board dimensions" => "החל ממדי לוח",
+        "Apply board dimensions" => "החלת ממדי לוח",
         "Cutout radius" => "רדיוס חיתוך",
         "CHECKS" => "בדיקות",
         "{} electrical · {} board >" => "{} חשמל · {} לוח >",
@@ -510,7 +510,7 @@ fn hebrew(key: &str) -> Option<&'static str> {
             "בדיקות ראשוניות; בדיקות ERC/DRC מלאות בפיתוח."
         }
         "Ready · A add · W wire · X route · M move · R rotate · E properties" => {
-            "מוכן · A הוסף · W חוט · X נתיב · M הזז · R סובב · E מאפיינים"
+            "מוכן · A הוספה · W חיווט · X ניתוב · M הזזה · R סיבוב · E מאפיינים"
         }
         "{} · committed" => "{} · אושר",
         "{} · complete" => "{} · הושלם",
@@ -531,24 +531,24 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Execute" => "ביצוע",
         "Original starter symbols" => "סמלי פתיחה מקוריים",
         "{} · {} · 2 pins" => "{} · {} · 2 פינים",
-        "Place in schematic >" => "הצב בסכמה >",
+        "Place in schematic >" => "הצבה בסכמה >",
         "Design checks" => "בדיקות תכנון",
         "Select a finding to inspect its affected object in the editor." => {
-            "בחר ממצא כדי לבדוק את האובייקט המושפע בעורך."
+            "יש לבחור ממצא כדי לבדוק את האובייקט המושפע בעורך."
         }
         "Electrical" => "חשמל",
         "Board" => "לוח",
         "No findings in the implemented checks" => "לא נמצאו ממצאים בבדיקות המיושמות",
         "finding" => "ממצא",
         "SELECT" => "בחירה",
-        "PLACE SYMBOL · CLICK TO COMMIT" => "הצבת סמל · לחץ לאישור",
-        "PLACE SYMBOL PACKAGE · CLICK TO COMMIT" => "הצבת חבילת סמל · לחץ לאישור",
-        "WIRE · PICK FIRST PIN" => "חיווט · בחר פין ראשון",
-        "WIRE · PICK SECOND PIN" => "חיווט · בחר פין שני",
-        "ROUTE · PICK FIRST PAD" => "ניתוב · בחר פד ראשון",
-        "ROUTE · PICK SECOND PAD" => "ניתוב · בחר פד שני",
-        "MOVE · CLICK TO PLACE SELECTION" => "הזזה · לחץ להצבת הבחירה",
-        "CUTOUT · CLICK TO PLACE" => "חיתוך · לחץ להצבה",
+        "PLACE SYMBOL · CLICK TO COMMIT" => "הצבת סמל · לחיצה לאישור",
+        "PLACE SYMBOL PACKAGE · CLICK TO COMMIT" => "הצבת חבילת סמל · לחיצה לאישור",
+        "WIRE · PICK FIRST PIN" => "חיווט · בחירת פין ראשון",
+        "WIRE · PICK SECOND PIN" => "חיווט · בחירת פין שני",
+        "ROUTE · PICK FIRST PAD" => "ניתוב · בחירת פד ראשון",
+        "ROUTE · PICK SECOND PAD" => "ניתוב · בחירת פד שני",
+        "MOVE · CLICK TO PLACE SELECTION" => "הזזה · לחיצה להצבת הבחירה",
+        "CUTOUT · CLICK TO PLACE" => "חיתוך · לחיצה להצבה",
         "{} × {} mm    F.Cu / B.Cu    clearance {} mm" => {
             "{} × {} מ\"מ    F.Cu / B.Cu    מרווח {} מ\"מ"
         }
@@ -562,13 +562,13 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Through" => "דרך",
         "Vertex {}" => "קודקוד {}",
         "Remaining vertices are preserved." => "הקודקודים הנותרים נשמרים.",
-        "Add vertex" => "הוסף קודקוד",
-        "Remove last vertex" => "הסר קודקוד אחרון",
+        "Add vertex" => "הוספת קודקוד",
+        "Remove last vertex" => "הסרת קודקוד אחרון",
         "Position" => "מיקום",
         "Text" => "טקסט",
         "Text size" => "גודל טקסט",
         "Angle" => "זווית",
-        "Add drawing:" => "הוסף ציור:",
+        "Add drawing:" => "הוספת ציור:",
         "Line" => "קו",
         "Rectangle" => "מלבן",
         "Circle" => "עיגול",
@@ -584,8 +584,8 @@ fn hebrew(key: &str) -> Option<&'static str> {
             "הגדרות שמורות נשמרות בפרויקט זה. רכיבים שהוצבו שומרים על העותקים המוטמעים שלהם."
         }
         "Collection file" => "קובץ אוסף",
-        "Save library" => "שמור ספרייה",
-        "Load library" => "טען ספרייה",
+        "Save library" => "שמירת ספרייה",
+        "Load library" => "טעינת ספרייה",
         "Symbols" => "סמלים",
         "{} physical pins" => "{} פינים פיזיים",
         "Edit" => "עריכה",
@@ -593,10 +593,10 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Remove" => "הסרה",
         "Footprints" => "עקבות",
         "{} pads" => "{} פדים",
-        "Assign to selection" => "שייך לבחירה",
+        "Assign to selection" => "שיוך לבחירה",
         "Library editor" => "עורך ספריות",
         "Create a symbol or footprint, or edit a copy from the installed/project library." => {
-            "צור סמל או עקבה, או ערוך עותק מהספרייה המותקנת או מספריית הפרויקט."
+            "ניתן ליצור סמל או עקבה, או לערוך עותק מהספרייה המותקנת או מספריית הפרויקט."
         }
         "Dimensions are millimetres; angles are counterclockwise degrees. Save commits one undoable edit." => {
             "הממדים הם במילימטרים; הזוויות במעלות נגד כיוון השעון. שמירה יוצרת עריכה אחת הניתנת לביטול."
@@ -608,10 +608,10 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Description" => "תיאור",
         "Suggested footprint" => "עקבה מומלצת",
         "Preserved unsupported features: {}" => "תכונות לא נתמכות שנשמרו: {}",
-        "Save symbol to project library" => "שמור סמל בספריית הפרויקט",
+        "Save symbol to project library" => "שמירת סמל בספריית הפרויקט",
         "Pins" => "פינים",
-        "Duplicate preview unit" => "שכפל יחידת תצוגה מקדימה",
-        "Add pin" => "הוסף פין",
+        "Duplicate preview unit" => "שכפול יחידת תצוגה מקדימה",
+        "Add pin" => "הוספת פין",
         "Pin {} · unit {}" => "פין {} · יחידה {}",
         "Number" => "מספר",
         "Connection" => "חיבור",
@@ -619,14 +619,14 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Unit " => "יחידה ",
         "Unit (0 shared) " => "יחידה (0 משותף) ",
         "Corner ratio " => "יחס פינה ",
-        "Delete pin" => "מחק פין",
+        "Delete pin" => "מחיקת פין",
         "Drawing" => "ציור",
         "Graphic {} · unit {}" => "גרפיקה {} · יחידה {}",
-        "Delete graphic" => "מחק גרפיקה",
+        "Delete graphic" => "מחיקת גרפיקה",
         "Footprint editor" => "עורך עקבות",
-        "Save footprint to project library" => "שמור עקבה בספריית הפרויקט",
+        "Save footprint to project library" => "שמירת עקבה בספריית הפרויקט",
         "Pads" => "פדים",
-        "Add pad" => "הוסף פד",
+        "Add pad" => "הוספת פד",
         "Pad {} · {}" => "פד {} · {}",
         "Copper size" => "גודל נחושת",
         "Front SMD" => "SMD קדמי",
@@ -634,26 +634,26 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Drill size (oval if unequal)" => "גודל קדח (אובלי אם לא שווה)",
         "Drill offset" => "היסט קדח",
         "Layers: {}" => "שכבות: {}",
-        "Delete pad" => "מחק פד",
+        "Delete pad" => "מחיקת פד",
         "Graphic {}" => "גרפיקה {}",
         "KiCad libraries" => "ספריות KiCad",
         "Browse installed libraries · definitions used by a project are embedded on placement." => {
-            "עיין בספריות מותקנות · הגדרות שבשימוש הפרויקט מוטמעות בעת ההצבה."
+            "עיון בספריות מותקנות · הגדרות שבשימוש הפרויקט מוטמעות בעת ההצבה."
         }
-        "Refresh folders" => "רענן תיקיות",
-        "Choose library" => "בחר ספרייה",
+        "Refresh folders" => "רענון תיקיות",
+        "Choose library" => "בחירת ספרייה",
         "Library path" => "נתיב ספרייה",
-        "Search names, descriptions, keywords" => "חפש שמות, תיאורים, מילות מפתח",
+        "Search names, descriptions, keywords" => "חיפוש שמות, תיאורים, מילות מפתח",
         "Search" => "חיפוש",
-        "Reading library…" => "קורא ספרייה…",
+        "Reading library…" => "קריאת הספרייה…",
         "Installed library browsing is available in the desktop build." => {
             "עיון בספריות מותקנות זמין בגרסת שולחן העבודה."
         }
         "Some library folders exceeded the scan limit; use a specific library path." => {
-            "תיקיות ספרייה מסוימות חרגו ממגבלת הסריקה; השתמש בנתיב ספרייה ספציפי."
+            "תיקיות ספרייה מסוימות חרגו ממגבלת הסריקה; יש להשתמש בנתיב ספרייה ספציפי."
         }
         "{} matches in scanned entries · showing up to 100" => {
-            "{} התאמות בערכים שנסרקו · מציג עד 100"
+            "{} התאמות בערכים שנסרקו · מוצגות עד 100"
         }
         "Directory scan reached its limit; more entries may exist." => {
             "סריקת התיקיות הגיעה למגבלה; ייתכן שקיימים ערכים נוספים."
@@ -661,29 +661,29 @@ fn hebrew(key: &str) -> Option<&'static str> {
         "Original nodes exceed inline editing limits; the source file is preserved." => {
             "הצמתים המקוריים חורגים ממגבלות העריכה המוטבעת; קובץ המקור נשמר."
         }
-        "Edit a copy →" => "ערוך עותק →",
+        "Edit a copy →" => "עריכת עותק →",
         "{} pads · {} graphics" => "{} פדים · {} רכיבים גרפיים",
         "Pad numbers must match every pin of the selected symbol." => {
             "מספרי הפדים חייבים להתאים לכל פין בסמל הנבחר."
         }
-        "Assign to {}" => "שייך אל {}",
+        "Assign to {}" => "שיוך אל {}",
         "Select a schematic component before assigning its footprint." => {
-            "בחר רכיב סכמה לפני שיוך העקבה שלו."
+            "יש לבחור רכיב סכמה לפני שיוך העקבה שלו."
         }
         "{} pins · {} units" => "{} פינים · {} יחידות",
         "Suggested footprint: {}" => "עקבה מומלצת: {}",
-        "Place in schematic →" => "הצב בסכמה →",
+        "Place in schematic →" => "הצבה בסכמה →",
         "Inspection available; unsupported pin/graphic styles or repeated common pin numbers cannot be placed yet." => {
             "הבדיקה זמינה; סגנונות פין/גרפיקה לא נתמכים או מספרי פין חוזרים עדיין לא ניתנים להצבה."
         }
         "Choose an entry to preview its real geometry." => {
-            "בחר ערך כדי לראות תצוגה מקדימה של הגיאומטריה."
+            "יש לבחור ערך כדי לראות תצוגה מקדימה של הגיאומטריה."
         }
         "KiCad libraries: CC-BY-SA 4.0 + design exception" => {
             "ספריות KiCad: CC-BY-SA 4.0 + חריג עיצוב"
         }
         "Placement: single/multi-unit symbols, matching front SMD or plated through-hole packages. Use Edit a copy to customize a definition." => {
-            "הצבה: סמלים של יחידה אחת או מספר יחידות, התאמת חבילות SMD קדמיות או קדח מצופה. השתמש בערוך עותק להתאמה אישית."
+            "הצבה: סמלים של יחידה אחת או מספר יחידות, התאמת חבילות SMD קדמיות או קדח מצופה. יש להשתמש ב״עריכת עותק״ להתאמה אישית."
         }
         "Preview unit" => "יחידת תצוגה מקדימה",
         _ => return None,
