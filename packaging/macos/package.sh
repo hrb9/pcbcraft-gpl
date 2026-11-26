@@ -115,18 +115,25 @@ sign() {
 }
 
 notarize() {
-  local file="$1" out id status
+  local file="$1" out id status rc=0
   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
   out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
+    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || rc=$?
   echo "$out"
   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+  if [ "$rc" -ne 0 ] && [ "$status" != "Accepted" ]; then
+    if [ -n "$id" ]; then
+      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
+    fi
+    echo "error: notarytool submit for $(basename "$file") failed with exit $rc (status: ${status:-unknown})" >&2
+    exit 1
+  fi
   if [ "$status" != "Accepted" ]; then
     if [ -n "$id" ]; then
       xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
     fi
-    echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+    echo "error: notarization of $(basename "$file") rejected (status: ${status:-unknown})" >&2
     exit 1
   fi
 }
